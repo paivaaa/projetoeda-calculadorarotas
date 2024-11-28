@@ -11,22 +11,15 @@ package algoritmo;
 import modelo.*;
 
 public class Distancia {
-    
-    
     public static double calcularDistancia(double lat1, double lon1, double lat2, double lon2) {
-        final double R = 6371; // Raio da Terra em km
-
-        // Converter coordenadas para radianos
-        double lat1Rad = Math.toRadians(lat1);
-        double lat2Rad = Math.toRadians(lat2);
-        double lon1Rad = Math.toRadians(lon1);
-        double lon2Rad = Math.toRadians(lon2);
-
-        // Aplicar a fórmula da lei dos cossenos esféricos
-        return Math.acos(
-                Math.sin(lat1Rad) * Math.sin(lat2Rad) +
-                Math.cos(lat1Rad) * Math.cos(lat2Rad) *
-                Math.cos(lon2Rad - lon1Rad)
-        ) * R;
+        // Fórmula Haversine para calcular a distância entre duas coordenadas geográficas
+        final int R = 6371; // Raio da Terra em km
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) +
+                   Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                   Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c; // Distância em km
     }
 }
