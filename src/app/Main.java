@@ -1,11 +1,9 @@
 package app;
 
-import algoritmo.Dijkstra;
-import algoritmo.Distancia;
 import java.util.List;
 import java.util.Scanner;
+import modelo.CalcularRota;
 import modelo.Cidade;
-import modelo.Grafo;
 import util.CarregarCSV;
 
 public class Main {
@@ -14,92 +12,70 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String continuar = null;
 
-        System.out.println("Bem-vindo a Calculadora de Roras");
+        System.out.println("Bem-vindo a Calculadora de Rotas");
 
         do {
-            // Solicita o nome do país ao usuário
-            System.out.print("Digite o nome do pais: ");
-            String paisEscolhido = scanner.nextLine().trim();
+            // Solicita o país de origem e cidade de origem ao usuário
+            System.out.print("Digite o nome do pais de origem: ");
+            String paisOrigem = scanner.nextLine().trim();
+            System.out.print("Digite o nome da cidade de origem: ");
+            String cidadeOrigemNome = scanner.nextLine().trim();
 
-            // Carregar cidades do país escolhido
-            List<Cidade> cidades = CarregarCSV.carregarCidades(paisEscolhido);
-
-            if (cidades.isEmpty()) {
-                System.out.println("Nenhuma cidade encontrada para o pais: " + paisEscolhido);
-                return;
+            // Carregar cidades do país de origem
+            List<Cidade> cidadesOrigem = CarregarCSV.carregarCidades(paisOrigem);
+            if (cidadesOrigem.isEmpty()) {
+                System.out.println("Nenhuma cidade encontrada para o pais de origem: " + paisOrigem);
+                continue;
             }
 
-            System.out.println("\nCidades disponiveis:");
-            String cidadesFormatadas = String.join(", ", cidades.stream().map(Cidade::getNome).toList());
-            System.out.println(cidadesFormatadas);
-
-            // Solicita a cidade de origem e destino
-            System.out.print("\nDigite o nome da cidade de origem: ");
-            String cidadeOrigem = scanner.nextLine().trim();
+            // Solicita o país de destino e cidade de destino ao usuário
+            System.out.print("Digite o nome do país de destino: ");
+            String paisDestino = scanner.nextLine().trim();
             System.out.print("Digite o nome da cidade de destino: ");
-            String cidadeDestino = scanner.nextLine().trim();
+            String cidadeDestinoNome = scanner.nextLine().trim();
 
-            // Verifica se as cidades estão na lista
-            Cidade origem = null, destino = null;
-            for (Cidade cidade : cidades) {
-                if (cidade.getNome().equalsIgnoreCase(cidadeOrigem)) {
-                    origem = cidade;
-                }
-                if (cidade.getNome().equalsIgnoreCase(cidadeDestino)) {
-                    destino = cidade;
+            // Carregar cidades do país de destino
+            List<Cidade> cidadesDestino = CarregarCSV.carregarCidades(paisDestino);
+            if (cidadesDestino.isEmpty()) {
+                System.out.println("Nenhuma cidade encontrada para o pais de destino: " + paisDestino);
+                continue;
+            }
+
+            // Verifica se as cidades de origem e destino estão na lista
+            Cidade cidadeOrigem = null, cidadeDestino = null;
+
+            for (Cidade cidade : cidadesOrigem) {
+                if (cidade.getNome().equalsIgnoreCase(cidadeOrigemNome)) {
+                    cidadeOrigem = cidade;
+                    break;
                 }
             }
 
-            if (origem == null || destino == null) {
-                System.out.println("Uma ou ambas as cidades nao foram encontradas.");
+            for (Cidade cidade : cidadesDestino) {
+                if (cidade.getNome().equalsIgnoreCase(cidadeDestinoNome)) {
+                    cidadeDestino = cidade;
+                    break;
+                }
+            }
+
+            if (cidadeOrigem == null || cidadeDestino == null) {
+                System.out.println("Uma ou ambas as cidades não foram encontradas.");
                 continue; // Reinicia o loop para perguntar novamente
             }
 
-            // Define autonomia do automóvel
-            int autonomia = 200; // Em km
+            // Solicita a autonomia ao utilizador
+            System.out.print("\nDigite a autonomia do automóvel (em km): ");
+            int autonomia = scanner.nextInt();
+            scanner.nextLine();  // Consome a nova linha após o número
 
-            // Cria o grafo com base na distância em linha reta
-            Grafo grafo = new Grafo(cidades.size());
-            for (int i = 0; i < cidades.size(); i++) {
-                for (int j = i + 1; j < cidades.size(); j++) {
-                    double distancia = Distancia.calcularDistancia(
-                            cidades.get(i).getLatitude(),
-                            cidades.get(i).getLongitude(),
-                            cidades.get(j).getLatitude(),
-                            cidades.get(j).getLongitude()
-                    );
-                    if (distancia <= autonomia) {
-                        grafo.adicionarAresta(i, j, distancia);
-                    }
-                }
-            }
+            System.out.println("");
 
-            // Executa o algoritmo de Dijkstra
-            System.out.println("\nCalculando o caminho mais curto entre " + cidadeOrigem + " e " + cidadeDestino + "...");
-            int indexOrigem = cidades.indexOf(origem);
-            int indexDestino = cidades.indexOf(destino);
+            // Chama o método calcularRota para calcular o caminho entre as cidades
+            System.out.println("\nCalculando o caminho mais curto entre " + cidadeOrigemNome + " e " + cidadeDestinoNome + "...");
+            String resultadoRota = CalcularRota.calcularRota(cidadeOrigemNome, cidadeDestinoNome, autonomia);
 
-            Dijkstra dijkstra = new Dijkstra(cidades.size());
-            dijkstra.setGraph(grafo.getGraph());
-
-            // Calculando o caminho mais curto
-            List<Integer> caminho = dijkstra.dijkstra(indexOrigem, indexDestino);
-
-            if (caminho != null && !caminho.isEmpty()) {
-                System.out.println("Caminho mais curto: ");
-                for (int i = 0; i < caminho.size(); i++) {
-                    System.out.print(cidades.get(caminho.get(i)).getNome());
-                    if (i < caminho.size() - 1) {
-                        System.out.print(" -> ");
-                    }
-                }
-
-                // Distância total
-                double distanciaTotal = dijkstra.getDistanciaTotal(indexDestino);
-                System.out.println("\nDistancia total: " + distanciaTotal + " km");
-            } else {
-                System.out.println("Nao foi possível encontrar um caminho entre as cidades.");
-            }
+            // Exibe o resultado
+            System.out.println(resultadoRota);
 
             // Pergunta ao utilizador se deseja calcular outra rota
             System.out.print("\nDeseja calcular uma nova rota? (sim/nao): ");

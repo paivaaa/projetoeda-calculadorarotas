@@ -1,10 +1,9 @@
 package algoritmo;
 
-import modelo.Matriz;
-
 import java.util.*;
 
 public class Dijkstra {
+
     private double[] dist;  // Usar double ao invés de int
     private int[] prev;
     private double[][] graph;
@@ -30,7 +29,9 @@ public class Dijkstra {
 
         while (!pq.isEmpty()) {
             int u = pq.poll();
-            if (u == destino) break;
+            if (u == destino) {
+                break;
+            }
 
             for (int v = 0; v < graph[u].length; v++) {
                 if (graph[u][v] != -1) {
@@ -57,4 +58,3 @@ public class Dijkstra {
         return dist[destino];
     }
 }
-
