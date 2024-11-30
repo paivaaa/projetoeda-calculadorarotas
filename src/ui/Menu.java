@@ -35,6 +35,11 @@ public class Menu extends javax.swing.JFrame {
         btnCalcularRotas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCalcularRotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/map-icon.png"))); // NOI18N
         btnCalcularRotas.setText("Calcular rotas");
+        btnCalcularRotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularRotasActionPerformed(evt);
+            }
+        });
 
         btnPesquisarCidades.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPesquisarCidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/search-icon.png"))); // NOI18N
@@ -53,7 +58,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPesquisarCidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCalcularRotas, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCalcularRotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,6 +75,13 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCalcularRotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularRotasActionPerformed
+        // TODO add your handling code here:
+        CalcularRotas calcularRotas = new CalcularRotas();
+        calcularRotas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCalcularRotasActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,13 @@
  */
 package ui;
 
+import java.awt.*;
+import javax.swing.JOptionPane;
+import java.util.List;
+import java.util.Scanner;
+import modelo.CalcularRota;
+import modelo.Cidade;
+import util.CarregarCSV;
 /**
  *
  * @author Tiago Paiva
@@ -51,6 +58,11 @@ public class CalcularRotas extends javax.swing.JFrame {
         btnback.setBorderPainted(false);
         btnback.setContentAreaFilled(false);
         btnback.setFocusable(false);
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
@@ -58,7 +70,7 @@ public class CalcularRotas extends javax.swing.JFrame {
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addComponent(btnback)
-                .addGap(0, 382, Short.MAX_VALUE))
+                .addGap(0, 389, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,6 +96,11 @@ public class CalcularRotas extends javax.swing.JFrame {
         btnNovaRota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnNovaRota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/navigation-icon.png"))); // NOI18N
         btnNovaRota.setText("Nova Rota");
+        btnNovaRota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaRotaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,6 +171,12 @@ public class CalcularRotas extends javax.swing.JFrame {
         autonomiaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/autonomy-icon.png"))); // NOI18N
         autonomiaIcon.setText("Autonomia (km)");
 
+        inputAutonomia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputAutonomiaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -190,7 +213,7 @@ public class CalcularRotas extends javax.swing.JFrame {
                                 .addGap(85, 85, 85)
                                 .addComponent(autonomiaIcon)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputAutonomia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(inputAutonomia, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -225,6 +248,74 @@ public class CalcularRotas extends javax.swing.JFrame {
 
     private void btnCalcularRotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularRotaActionPerformed
         // TODO add your handling code here:
+                // Captura os dados dos campos de texto
+        String paisOrigemNome = paisOrigem.getText().trim();
+        String cidadeOrigemNome = cidadaOrigem.getText().trim();
+        String paisDestinoNome = paisDestino.getText().trim();
+        String cidadeDestinoNome = cidadeDestino.getText().trim();
+        String autonomiaStr = inputAutonomia.getText().trim();
+
+        // Valida se os campos não estão vazios
+        if (paisOrigemNome.isEmpty() || cidadeOrigemNome.isEmpty() || paisDestinoNome.isEmpty() || cidadeDestinoNome.isEmpty() || autonomiaStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Tenta converter a autonomia para inteiro
+        int autonomia;
+        try {
+            autonomia = Integer.parseInt(autonomiaStr);
+            if (autonomia <= 0) {
+                JOptionPane.showMessageDialog(this, "A autonomia deve ser um valor positivo maior que 0!", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "A autonomia deve ser um número válido!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Carregar cidades do país de origem
+        List<Cidade> cidadesOrigem = CarregarCSV.carregarCidades(paisOrigemNome);
+        if (cidadesOrigem.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nenhuma cidade encontrada para o país de origem: " + paisOrigemNome, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Carregar cidades do país de destino
+        List<Cidade> cidadesDestino = CarregarCSV.carregarCidades(paisDestinoNome);
+        if (cidadesDestino.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nenhuma cidade encontrada para o país de destino: " + paisDestinoNome, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+         // Verifica se as cidades de origem e destino estão na lista
+            Cidade cidadeOrigem = null, cidadeDestino = null;
+
+            for (Cidade cidade : cidadesOrigem) {
+                if (cidade.getNome().equalsIgnoreCase(cidadeOrigemNome)) {
+                    cidadeOrigem = cidade;
+                    break;
+                }
+            }
+
+            for (Cidade cidade : cidadesDestino) {
+                if (cidade.getNome().equalsIgnoreCase(cidadeDestinoNome)) {
+                    cidadeDestino = cidade;
+                    break;
+                }
+            }
+
+            if (cidadeOrigem == null || cidadeDestino == null) { 
+                JOptionPane.showMessageDialog(this, "Uma ou ambas as cidades não foram encontradas." , "Erro", JOptionPane.ERROR_MESSAGE);
+                
+            }
+            
+            // Calcular a rota
+        String resultadoRota = CalcularRota.calcularRota(cidadeOrigemNome, cidadeDestinoNome, autonomia);
+
+        // Exibir o resultado
+        JOptionPane.showMessageDialog(this, resultadoRota, "Resultado da Rota", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_btnCalcularRotaActionPerformed
 
     private void paisDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisDestinoActionPerformed
@@ -241,7 +332,28 @@ public class CalcularRotas extends javax.swing.JFrame {
 
     private void paisOrigemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisOrigemActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_paisOrigemActionPerformed
+
+    private void btnNovaRotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaRotaActionPerformed
+        // TODO add your handling code here:
+        paisOrigem.setText("");
+        cidadaOrigem.setText("");
+        paisDestino.setText("");
+        cidadeDestino.setText("");
+        inputAutonomia.setText("");
+    }//GEN-LAST:event_btnNovaRotaActionPerformed
+
+    private void inputAutonomiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAutonomiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputAutonomiaActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnbackActionPerformed
 
     /**
      * @param args the command line arguments
