@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 import algoritmo.Dijkstra;
@@ -15,7 +11,7 @@ import util.CarregarCidades;
 
 public class CalcularRota {
 
-   public static String calcularRota(String cidadeOrigemNome, String cidadeDestinoNome, int autonomia) {
+    public static String calcularRota(String cidadeOrigemNome, String cidadeDestinoNome, int autonomia) {
         // Carregar cidades próximas da origem e destino
         List<Cidade> cidades = CarregarCidades.carregarCidadesProximas(cidadeOrigemNome, cidadeDestinoNome);
         if (cidades.isEmpty()) {
@@ -50,6 +46,9 @@ public class CalcularRota {
                     cidades.get(j).getLatitude(),
                     cidades.get(j).getLongitude()
                 );
+                // Arredondar a distância para 2 casas decimais
+                distancia = Math.round(distancia * 100.0) / 100.0;
+
                 if (distancia <= autonomia) {
                     grafo.adicionarAresta(i, j, distancia);
                 }
@@ -73,7 +72,8 @@ public class CalcularRota {
                     resultado.append(" -> ");
                 }
             }
-            double distanciaTotal = dijkstra.getDistanciaTotal(indexDestino);
+            // Arredondar a distância total para 2 casas decimais
+            double distanciaTotal = Math.round(dijkstra.getDistanciaTotal(indexDestino) * 100.0) / 100.0;
             resultado.append("\nDistância total: ").append(distanciaTotal).append(" km");
             return resultado.toString();
         } else {
