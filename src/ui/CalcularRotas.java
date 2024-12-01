@@ -266,7 +266,7 @@ public class CalcularRotas extends javax.swing.JFrame {
         try {
             autonomia = Integer.parseInt(autonomiaStr);
             if (autonomia <= 0) {
-                JOptionPane.showMessageDialog(this, "A autonomia deve ser um valor positivo maior que 0!", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "A autonomia deve ser um valor positivo!", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
         } catch (NumberFormatException e) {

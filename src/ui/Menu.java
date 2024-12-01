@@ -44,6 +44,11 @@ public class Menu extends javax.swing.JFrame {
         btnPesquisarCidades.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPesquisarCidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/search-icon.png"))); // NOI18N
         btnPesquisarCidades.setText("Pesquisar");
+        btnPesquisarCidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarCidadesActionPerformed(evt);
+            }
+        });
 
         btnHistorico.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/history-icon.png"))); // NOI18N
@@ -82,6 +87,13 @@ public class Menu extends javax.swing.JFrame {
         calcularRotas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCalcularRotasActionPerformed
+
+    private void btnPesquisarCidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCidadesActionPerformed
+        // TODO add your handling code here:
+        Pesquisa pesquisa = new Pesquisa();
+        pesquisa.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnPesquisarCidadesActionPerformed
 
     /**
      * @param args the command line arguments
