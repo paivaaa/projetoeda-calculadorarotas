@@ -53,6 +53,11 @@ public class Menu extends javax.swing.JFrame {
         btnHistorico.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/history-icon.png"))); // NOI18N
         btnHistorico.setText("Histórico Rotas");
+        btnHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoricoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,6 +99,13 @@ public class Menu extends javax.swing.JFrame {
         pesquisa.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPesquisarCidadesActionPerformed
+
+    private void btnHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoricoActionPerformed
+        // TODO add your handling code here:
+        Historico historico = new Historico();
+        historico.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnHistoricoActionPerformed
 
     /**
      * @param args the command line arguments

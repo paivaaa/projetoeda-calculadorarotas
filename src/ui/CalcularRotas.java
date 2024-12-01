@@ -5,6 +5,7 @@
 package ui;
 
 import java.awt.*;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import java.util.List;
 import java.util.Scanner;
@@ -20,8 +21,24 @@ public class CalcularRotas extends javax.swing.JFrame {
     /**
      * Creates new form CalcularRotas
      */
+    
+    private LinkedList<String> rotasHistorico; // Lista para armazenar o histórico de pesquisas.
+    
+    
     public CalcularRotas() {
         initComponents();
+        rotasHistorico = new LinkedList<>();
+    }
+    
+    private void adicionarAoHistorico(String resultadoRota) {
+        if (rotasHistorico.size() == 20) {
+            rotasHistorico.removeLast(); // Remove o mais antigo se já houver 20 itens.
+        }
+        rotasHistorico.addFirst(resultadoRota); // Adiciona o país no início da lista.
+    }
+    
+    public List<String> getHistorico() {
+        return rotasHistorico;
     }
 
     /**
@@ -312,6 +329,10 @@ public class CalcularRotas extends javax.swing.JFrame {
             
             // Calcular a rota
         String resultadoRota = CalcularRota.calcularRota(cidadeOrigemNome, cidadeDestinoNome, autonomia);
+        
+        // Adiciona o país ao histórico
+        adicionarAoHistorico(resultadoRota);
+        System.out.println(rotasHistorico);
 
         // Exibir o resultado
         JOptionPane.showMessageDialog(this, resultadoRota, "Resultado da Rota", JOptionPane.INFORMATION_MESSAGE);
