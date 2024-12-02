@@ -9,12 +9,18 @@ package ui;
  * @author Tiago Paiva
  */
 public class Menu extends javax.swing.JFrame {
+    
+    CalcularRotas calcularRotas;
+    Historico historico;
 
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        calcularRotas = new CalcularRotas(this);
+        historico = new Historico(this);
+      
     }
 
     /**
@@ -88,23 +94,21 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnCalcularRotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularRotasActionPerformed
         // TODO add your handling code here:
-        CalcularRotas calcularRotas = new CalcularRotas();
         calcularRotas.setVisible(true);
-        this.dispose();
+        setVisible(false);
     }//GEN-LAST:event_btnCalcularRotasActionPerformed
 
     private void btnPesquisarCidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCidadesActionPerformed
         // TODO add your handling code here:
         Pesquisa pesquisa = new Pesquisa();
         pesquisa.setVisible(true);
-        this.dispose();
+        setVisible(false);
     }//GEN-LAST:event_btnPesquisarCidadesActionPerformed
 
     private void btnHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoricoActionPerformed
         // TODO add your handling code here:
-        Historico historico = new Historico();
         historico.setVisible(true);
-        this.dispose();
+        setVisible(false);
     }//GEN-LAST:event_btnHistoricoActionPerformed
 
     /**

@@ -4,6 +4,10 @@
  */
 package ui;
 
+import java.util.List;
+import javax.swing.DefaultListModel;
+import modelo.CalcularRota;
+
 /**
  *
  * @author bachilak
@@ -13,10 +17,29 @@ public class Historico extends javax.swing.JFrame {
     /**
      * Creates new form Historico
      */
-    public Historico() {
+    
+    private Menu menu;
+    
+    DefaultListModel data;
+    
+    public Historico(Menu menu) {
+        this.menu = menu; // Inicializar CalcularRotas
         initComponents();
+        //carregarRotas(); // Atualizar jList1 com dados
+        data = new DefaultListModel();
+        jList1.setModel(data);
     }
+    /**
+    private void carregarRotas() {
+        // Obter o resultado da rota
+        String resultadoRota = calcularRotas.getResultadoRota();
 
+        // Adicionar o resultado ao JList
+        DefaultListModel<String> model = new DefaultListModel<>();
+        model.addElement(resultadoRota); // Adiciona o valor calculado
+        jList1.setModel(model);
+    }
+    */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,6 +52,7 @@ public class Historico extends javax.swing.JFrame {
         BackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +70,13 @@ public class Historico extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -53,7 +84,10 @@ public class Historico extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BackBtn)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BackBtn)
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -61,7 +95,9 @@ public class Historico extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(BackBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BackBtn)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -72,48 +108,22 @@ public class Historico extends javax.swing.JFrame {
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
         // TODO add your handling code here:
-        Menu menu = new Menu();
+        setVisible(true);
         menu.setVisible(true);
-        this.dispose();
+      
     }//GEN-LAST:event_BackBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Historico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Historico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Historico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Historico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.out.println(menu.calcularRotas.getHistorico());
+        data.addAll(menu.calcularRotas.getHistorico());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Historico().setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

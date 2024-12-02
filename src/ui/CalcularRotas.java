@@ -4,11 +4,9 @@
  */
 package ui;
 
-import java.awt.*;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import java.util.List;
-import java.util.Scanner;
 import modelo.CalcularRota;
 import modelo.Cidade;
 import util.CarregarCSV;
@@ -22,23 +20,33 @@ public class CalcularRotas extends javax.swing.JFrame {
      * Creates new form CalcularRotas
      */
     
+    Menu menu;
+    
     private LinkedList<String> rotasHistorico; // Lista para armazenar o histórico de pesquisas.
+    private String resultadoRota;
     
-    
-    public CalcularRotas() {
+    public CalcularRotas(Menu menu) {
         initComponents();
+        this.menu = menu;
         rotasHistorico = new LinkedList<>();
     }
     
     private void adicionarAoHistorico(String resultadoRota) {
-        if (rotasHistorico.size() == 20) {
+        if (rotasHistorico.size() == 3) {
             rotasHistorico.removeLast(); // Remove o mais antigo se já houver 20 itens.
         }
         rotasHistorico.addFirst(resultadoRota); // Adiciona o país no início da lista.
     }
     
+    
+    
     public List<String> getHistorico() {
         return rotasHistorico;
+    }
+    
+    // Getter para obter o resultado
+    public String getResultadoRota() {
+        return resultadoRota;
     }
 
     /**
@@ -371,46 +379,10 @@ public class CalcularRotas extends javax.swing.JFrame {
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
         // TODO add your handling code here:
-        Menu menu = new Menu();
+        this.setVisible(false);
         menu.setVisible(true);
-        this.dispose();
+  
     }//GEN-LAST:event_btnbackActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CalcularRotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CalcularRotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CalcularRotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CalcularRotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CalcularRotas().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel autonomiaIcon;
     private javax.swing.JButton btnCalcularRota;
