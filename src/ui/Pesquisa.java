@@ -126,8 +126,9 @@ public class Pesquisa extends javax.swing.JFrame {
                 sb.append(cidade.getNome()).append("\n");  // Assumindo que Cidade tem o método getNome()
             }
 
-            // Exibir as cidades no JOptionPane
-            JOptionPane.showMessageDialog(this, sb.toString(), "Resultado da Pesquisa", JOptionPane.INFORMATION_MESSAGE);
+            JanelaCidades janelaCidades = new JanelaCidades(sb.toString(), this);
+            janelaCidades.setVisible(true);  // Tornar a JanelaCidades visível
+            this.setVisible(false);
         }
     }//GEN-LAST:event_PesquisarActionPerformed
 
