@@ -152,6 +152,7 @@ public class CalcularRotas extends javax.swing.JFrame {
                     .addContainerGap(10, Short.MAX_VALUE)))
         );
 
+        paisDestino.setText("portugal");
         paisDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paisDestinoActionPerformed(evt);
@@ -162,6 +163,7 @@ public class CalcularRotas extends javax.swing.JFrame {
         locationIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/location-icon.png"))); // NOI18N
         locationIcon1.setText("País:");
 
+        cidadaOrigem.setText("faro");
         cidadaOrigem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidadaOrigemActionPerformed(evt);
@@ -172,6 +174,7 @@ public class CalcularRotas extends javax.swing.JFrame {
         locationIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/buildings-icon.png"))); // NOI18N
         locationIcon2.setText("Cidade:");
 
+        cidadeDestino.setText("lisbon");
         cidadeDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidadeDestinoActionPerformed(evt);
@@ -182,6 +185,7 @@ public class CalcularRotas extends javax.swing.JFrame {
         locationIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/buildings-icon.png"))); // NOI18N
         locationIcon3.setText("Cidade:");
 
+        paisOrigem.setText("portugal");
         paisOrigem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paisOrigemActionPerformed(evt);
@@ -196,6 +200,7 @@ public class CalcularRotas extends javax.swing.JFrame {
         autonomiaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/autonomy-icon.png"))); // NOI18N
         autonomiaIcon.setText("Autonomia (km)");
 
+        inputAutonomia.setText("200");
         inputAutonomia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputAutonomiaActionPerformed(evt);
