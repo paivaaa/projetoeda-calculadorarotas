@@ -32,7 +32,7 @@ public class CalcularRotas extends javax.swing.JFrame {
     }
     
     private void adicionarAoHistorico(String resultadoRota) {
-        if (rotasHistorico.size() == 3) {
+        if (rotasHistorico.size() == 20) {
             rotasHistorico.removeLast(); // Remove o mais antigo se já houver 20 itens.
         }
         rotasHistorico.addFirst(resultadoRota); // Adiciona o país no início da lista.
