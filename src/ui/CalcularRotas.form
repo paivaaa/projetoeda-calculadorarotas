@@ -230,6 +230,9 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="paisDestino">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="portugal"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="paisDestinoActionPerformed"/>
           </Events>
@@ -246,6 +249,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="cidadaOrigem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="faro"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cidadaOrigemActionPerformed"/>
           </Events>
@@ -262,6 +268,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="cidadeDestino">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="lisbon"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cidadeDestinoActionPerformed"/>
           </Events>
@@ -278,6 +287,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="paisOrigem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="portugal"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="paisOrigemActionPerformed"/>
           </Events>
@@ -305,6 +317,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="inputAutonomia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="200"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputAutonomiaActionPerformed"/>
           </Events>

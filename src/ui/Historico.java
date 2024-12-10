@@ -108,7 +108,9 @@ public class Historico extends javax.swing.JFrame {
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
         // TODO add your handling code here:
-        setVisible(true);
+        DefaultListModel<String> model = (DefaultListModel<String>) jList1.getModel();
+        model.removeAllElements();
+        this.setVisible(false);
         menu.setVisible(true);
       
     }//GEN-LAST:event_BackBtnActionPerformed

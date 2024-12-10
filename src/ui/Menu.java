@@ -12,6 +12,7 @@ public class Menu extends javax.swing.JFrame {
     
     CalcularRotas calcularRotas;
     Historico historico;
+     Pesquisa pesquisa;
 
     /**
      * Creates new form Menu
@@ -20,6 +21,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         calcularRotas = new CalcularRotas(this);
         historico = new Historico(this);
+        pesquisa = new Pesquisa(this);
       
     }
 
@@ -100,7 +102,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnPesquisarCidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCidadesActionPerformed
         // TODO add your handling code here:
-        Pesquisa pesquisa = new Pesquisa();
         pesquisa.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnPesquisarCidadesActionPerformed
