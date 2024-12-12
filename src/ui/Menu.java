@@ -19,10 +19,14 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        
+        setTitle("Calculadora de rotas");
+        setLocationRelativeTo(null);
+        
+        
         calcularRotas = new CalcularRotas(this);
         historico = new Historico(this);
         pesquisa = new Pesquisa(this);
-      
     }
 
     /**
@@ -43,11 +47,13 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        DownPanel.setBackground(new java.awt.Color(255, 255, 255));
         DownPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCalcularRotas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCalcularRotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/map-icon.png"))); // NOI18N
         btnCalcularRotas.setText("Calcular rotas");
+        btnCalcularRotas.setFocusable(false);
         btnCalcularRotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalcularRotasActionPerformed(evt);
@@ -58,6 +64,7 @@ public class Menu extends javax.swing.JFrame {
         btnPesquisarCidades.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPesquisarCidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/search-icon.png"))); // NOI18N
         btnPesquisarCidades.setText("Pesquisar");
+        btnPesquisarCidades.setFocusable(false);
         btnPesquisarCidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarCidadesActionPerformed(evt);
@@ -68,6 +75,7 @@ public class Menu extends javax.swing.JFrame {
         btnHistorico.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/history-icon.png"))); // NOI18N
         btnHistorico.setText("Histórico Rotas");
+        btnHistorico.setFocusable(false);
         btnHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHistoricoActionPerformed(evt);
@@ -76,6 +84,8 @@ public class Menu extends javax.swing.JFrame {
         DownPanel.add(btnHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 138, 230, 40));
 
         getContentPane().add(DownPanel, java.awt.BorderLayout.CENTER);
+
+        UpPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/logo.png"))); // NOI18N

@@ -4,9 +4,8 @@
  */
 package ui;
 
-import java.util.List;
+import java.awt.Color;
 import javax.swing.DefaultListModel;
-import modelo.CalcularRota;
 
 /**
  *
@@ -27,6 +26,12 @@ public class Historico extends javax.swing.JFrame {
         initComponents();
         //carregarRotas(); // Atualizar jList1 com dados
         data = new DefaultListModel();
+        
+        setTitle("Calculadora de rotas");
+        setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.WHITE);
+        
+        
         jList1.setModel(data);
     }
     /**
@@ -71,6 +76,7 @@ public class Historico extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList1.setFocusable(false);
         jScrollPane1.setViewportView(jList1);
 
         btnCarregarHistorico.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

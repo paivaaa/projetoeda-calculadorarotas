@@ -29,6 +29,9 @@ public class CalcularRotas extends javax.swing.JFrame {
         initComponents();
         this.menu = menu;
         rotasHistorico = new LinkedList<>();
+        
+        setTitle("Calculadora de rotas");
+        setLocationRelativeTo(null);
     }
     
     private void adicionarAoHistorico(String resultadoRota) {
@@ -60,7 +63,7 @@ public class CalcularRotas extends javax.swing.JFrame {
 
         headerPanel = new javax.swing.JPanel();
         btnback = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        bottomPapel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnCalcularRota = new javax.swing.JButton();
         btnNovaRota = new javax.swing.JButton();
@@ -77,6 +80,7 @@ public class CalcularRotas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        headerPanel.setBackground(new java.awt.Color(255, 255, 255));
         headerPanel.setPreferredSize(new java.awt.Dimension(400, 35));
 
         btnback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/back-icon.png"))); // NOI18N
@@ -95,7 +99,7 @@ public class CalcularRotas extends javax.swing.JFrame {
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addComponent(btnback)
-                .addGap(0, 389, Short.MAX_VALUE))
+                .addGap(0, 382, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,6 +110,9 @@ public class CalcularRotas extends javax.swing.JFrame {
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
+        bottomPapel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 50));
 
         btnCalcularRota.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -207,39 +214,39 @@ public class CalcularRotas extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout bottomPapelLayout = new javax.swing.GroupLayout(bottomPapel);
+        bottomPapel.setLayout(bottomPapelLayout);
+        bottomPapelLayout.setHorizontalGroup(
+            bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bottomPapelLayout.createSequentialGroup()
+                .addGroup(bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPapelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(bottomPapelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bottomPapelLayout.createSequentialGroup()
+                                .addGroup(bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(bottomPapelLayout.createSequentialGroup()
                                         .addComponent(locationIcon)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(paisOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(bottomPapelLayout.createSequentialGroup()
                                         .addComponent(locationIcon2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cidadaOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(25, 25, 25)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(bottomPapelLayout.createSequentialGroup()
                                         .addComponent(locationIcon3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cidadeDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(bottomPapelLayout.createSequentialGroup()
                                         .addComponent(locationIcon1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(paisDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(bottomPapelLayout.createSequentialGroup()
                                 .addGap(85, 85, 85)
                                 .addComponent(autonomiaIcon)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -247,23 +254,23 @@ public class CalcularRotas extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        bottomPapelLayout.setVerticalGroup(
+            bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPapelLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(paisOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(locationIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(paisDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(locationIcon1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cidadaOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(locationIcon2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cidadeDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(locationIcon3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(autonomiaIcon)
                     .addComponent(inputAutonomia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
@@ -271,7 +278,7 @@ public class CalcularRotas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(bottomPapel, java.awt.BorderLayout.LINE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -390,6 +397,7 @@ public class CalcularRotas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnbackActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel autonomiaIcon;
+    private javax.swing.JPanel bottomPapel;
     private javax.swing.JButton btnCalcularRota;
     private javax.swing.JButton btnNovaRota;
     private javax.swing.JButton btnback;
@@ -397,7 +405,6 @@ public class CalcularRotas extends javax.swing.JFrame {
     private javax.swing.JTextField cidadeDestino;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JTextField inputAutonomia;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel locationIcon;
     private javax.swing.JLabel locationIcon1;
