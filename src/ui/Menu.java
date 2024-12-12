@@ -34,11 +34,16 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        DownPanel = new javax.swing.JPanel();
         btnCalcularRotas = new javax.swing.JButton();
         btnPesquisarCidades = new javax.swing.JButton();
         btnHistorico = new javax.swing.JButton();
+        UpPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        DownPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCalcularRotas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCalcularRotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/map-icon.png"))); // NOI18N
@@ -48,6 +53,7 @@ public class Menu extends javax.swing.JFrame {
                 btnCalcularRotasActionPerformed(evt);
             }
         });
+        DownPanel.add(btnCalcularRotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 22, 230, 40));
 
         btnPesquisarCidades.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPesquisarCidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/search-icon.png"))); // NOI18N
@@ -57,6 +63,7 @@ public class Menu extends javax.swing.JFrame {
                 btnPesquisarCidadesActionPerformed(evt);
             }
         });
+        DownPanel.add(btnPesquisarCidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 230, 40));
 
         btnHistorico.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/history-icon.png"))); // NOI18N
@@ -66,30 +73,32 @@ public class Menu extends javax.swing.JFrame {
                 btnHistoricoActionPerformed(evt);
             }
         });
+        DownPanel.add(btnHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 138, 230, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPesquisarCidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCalcularRotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(143, Short.MAX_VALUE))
+        getContentPane().add(DownPanel, java.awt.BorderLayout.CENTER);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/logo.png"))); // NOI18N
+        jLabel1.setText("Calculdora de Rotas");
+
+        javax.swing.GroupLayout UpPanelLayout = new javax.swing.GroupLayout(UpPanel);
+        UpPanel.setLayout(UpPanelLayout);
+        UpPanelLayout.setHorizontalGroup(
+            UpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UpPanelLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel1)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(113, Short.MAX_VALUE)
-                .addComponent(btnCalcularRotas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPesquisarCidades)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnHistorico)
-                .addGap(70, 70, 70))
+        UpPanelLayout.setVerticalGroup(
+            UpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UpPanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
+
+        getContentPane().add(UpPanel, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,8 +157,11 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel DownPanel;
+    private javax.swing.JPanel UpPanel;
     private javax.swing.JButton btnCalcularRotas;
     private javax.swing.JButton btnHistorico;
     private javax.swing.JButton btnPesquisarCidades;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
