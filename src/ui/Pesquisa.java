@@ -1,6 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Tiago Paiva e Mário Bonacho
  */
 package ui;
 
@@ -10,27 +15,22 @@ import javax.swing.JOptionPane;
 import modelo.Cidade;
 import util.CarregarCSV;
 
-/**
- *
- * @author bachilak
- */
 public class Pesquisa extends javax.swing.JFrame {
 
     /**
      * Creates new form Pesquisa
      */
-    
     Menu menu;
-    
+
     public Pesquisa(Menu menu) {
         initComponents();
         this.menu = menu;
-        
+
         setTitle("Calculadora de rotas");
-        
+
         getContentPane().setBackground(Color.WHITE);
         setResizable(false);
-        
+
         setLocationRelativeTo(null);
     }
 
@@ -111,17 +111,14 @@ public class Pesquisa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nomePaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomePaisActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_nomePaisActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
-        // TODO add your handling code here:
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarActionPerformed
-        // TODO add your handling code here:
         // Obter o nome do país a partir do campo de texto
         String pais = nomePais.getText().trim();
 

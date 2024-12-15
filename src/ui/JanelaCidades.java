@@ -1,27 +1,28 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Tiago Paiva e Mário Bonacho
  */
 package ui;
 
 import java.awt.Color;
 
-/**
- *
- * @author bachilak
- */
 public class JanelaCidades extends javax.swing.JFrame {
-    
+
     private Pesquisa pesquisa;
-    
+
     public JanelaCidades(String a, Pesquisa pesquisa) {
         initComponents();
-        
+
         setTitle("Calculadora de rotas");
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.WHITE);
         setResizable(false);
-        
+
         jTextArea1.setText(a);
         this.pesquisa = pesquisa;
     }
@@ -78,11 +79,9 @@ public class JanelaCidades extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        pesquisa.setVisible(true);  // Show the Pesquisa window
-        this.setVisible(false);  // Close the JanelaCidades window
+        pesquisa.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

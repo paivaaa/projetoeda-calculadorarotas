@@ -1,15 +1,16 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Tiago Paiva e Mário Bonacho
  */
 package ui;
 
 import java.awt.Color;
 
-/**
- *
- * @author Tiago Paiva
- */
 public class Menu extends javax.swing.JFrame {
     
     CalcularRotas calcularRotas;

@@ -1,6 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Tiago Paiva e Mário Bonacho
  */
 package ui;
 
@@ -11,45 +16,40 @@ import java.util.List;
 import modelo.CalcularRota;
 import modelo.Cidade;
 import util.CarregarCSV;
-/**
- *
- * @author Tiago Paiva
- */
+
+
 public class CalcularRotas extends javax.swing.JFrame {
 
     /**
      * Creates new form CalcularRotas
      */
-    
     Menu menu;
-    
+
     private LinkedList<String> rotasHistorico; // Lista para armazenar o histórico de pesquisas.
     private String resultadoRota;
-    
+
     public CalcularRotas(Menu menu) {
         initComponents();
         this.menu = menu;
         rotasHistorico = new LinkedList<>();
-        
+
         setTitle("Calculadora de rotas");
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.WHITE);
         setResizable(false);
     }
-    
+
     private void adicionarAoHistorico(String resultadoRota) {
         if (rotasHistorico.size() == 20) {
             rotasHistorico.removeLast(); // Remove o mais antigo se já houver 20 itens.
         }
         rotasHistorico.addFirst(resultadoRota); // Adiciona o país no início da lista.
     }
-    
-    
-    
+
     public List<String> getHistorico() {
         return rotasHistorico;
     }
-    
+
     // Getter para obter o resultado
     public String getResultadoRota() {
         return resultadoRota;
@@ -162,7 +162,6 @@ public class CalcularRotas extends javax.swing.JFrame {
                     .addContainerGap(10, Short.MAX_VALUE)))
         );
 
-        paisDestino.setText("portugal");
         paisDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paisDestinoActionPerformed(evt);
@@ -173,7 +172,6 @@ public class CalcularRotas extends javax.swing.JFrame {
         locationIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/location-icon.png"))); // NOI18N
         locationIcon1.setText("País:");
 
-        cidadaOrigem.setText("faro");
         cidadaOrigem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidadaOrigemActionPerformed(evt);
@@ -184,7 +182,6 @@ public class CalcularRotas extends javax.swing.JFrame {
         locationIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/buildings-icon.png"))); // NOI18N
         locationIcon2.setText("Cidade:");
 
-        cidadeDestino.setText("lisbon");
         cidadeDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidadeDestinoActionPerformed(evt);
@@ -209,7 +206,6 @@ public class CalcularRotas extends javax.swing.JFrame {
         autonomiaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/autonomy-icon.png"))); // NOI18N
         autonomiaIcon.setText("Autonomia (km)");
 
-        inputAutonomia.setText("200");
         inputAutonomia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputAutonomiaActionPerformed(evt);
@@ -286,8 +282,6 @@ public class CalcularRotas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalcularRotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularRotaActionPerformed
-        // TODO add your handling code here:
-                // Captura os dados dos campos de texto
         String paisOrigemNome = paisOrigem.getText().trim();
         String cidadeOrigemNome = cidadaOrigem.getText().trim();
         String paisDestinoNome = paisDestino.getText().trim();
@@ -299,7 +293,7 @@ public class CalcularRotas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         // Tenta converter a autonomia para inteiro
         int autonomia;
         try {
@@ -312,74 +306,72 @@ public class CalcularRotas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "A autonomia deve ser um número válido!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         // Carregar cidades do país de origem
         List<Cidade> cidadesOrigem = CarregarCSV.carregarCidades(paisOrigemNome);
         if (cidadesOrigem.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Nenhuma cidade encontrada para o país de origem: " + paisOrigemNome, "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         // Carregar cidades do país de destino
         List<Cidade> cidadesDestino = CarregarCSV.carregarCidades(paisDestinoNome);
         if (cidadesDestino.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Nenhuma cidade encontrada para o país de destino: " + paisDestinoNome, "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-         // Verifica se as cidades de origem e destino estão na lista
-            Cidade cidadeOrigem = null, cidadeDestino = null;
 
-            for (Cidade cidade : cidadesOrigem) {
-                if (cidade.getNome().equalsIgnoreCase(cidadeOrigemNome)) {
-                    cidadeOrigem = cidade;
-                    break;
-                }
-            }
+        // Verifica se as cidades de origem e destino estão na lista
+        Cidade cidadeOrigem = null, cidadeDestino = null;
 
-            for (Cidade cidade : cidadesDestino) {
-                if (cidade.getNome().equalsIgnoreCase(cidadeDestinoNome)) {
-                    cidadeDestino = cidade;
-                    break;
-                }
+        for (Cidade cidade : cidadesOrigem) {
+            if (cidade.getNome().equalsIgnoreCase(cidadeOrigemNome)) {
+                cidadeOrigem = cidade;
+                break;
             }
+        }
 
-            if (cidadeOrigem == null || cidadeDestino == null) { 
-                JOptionPane.showMessageDialog(this, "Uma ou ambas as cidades não foram encontradas." , "Erro", JOptionPane.ERROR_MESSAGE);
-                
+        for (Cidade cidade : cidadesDestino) {
+            if (cidade.getNome().equalsIgnoreCase(cidadeDestinoNome)) {
+                cidadeDestino = cidade;
+                break;
             }
-            
-            // Calcular a rota
+        }
+
+        if (cidadeOrigem == null || cidadeDestino == null) {
+            JOptionPane.showMessageDialog(this, "Uma ou ambas as cidades não foram encontradas.", "Erro", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+        // Calcular a rota
         String resultadoRota = CalcularRota.calcularRota(cidadeOrigemNome, cidadeDestinoNome, autonomia);
-        
+
         // Adiciona o país ao histórico
         adicionarAoHistorico(resultadoRota);
         System.out.println(rotasHistorico);
 
         // Exibir o resultado
         JOptionPane.showMessageDialog(this, resultadoRota, "Resultado da Rota", JOptionPane.INFORMATION_MESSAGE);
-        
+
     }//GEN-LAST:event_btnCalcularRotaActionPerformed
 
     private void paisDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisDestinoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_paisDestinoActionPerformed
 
     private void cidadaOrigemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadaOrigemActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cidadaOrigemActionPerformed
 
     private void cidadeDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeDestinoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cidadeDestinoActionPerformed
 
     private void paisOrigemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisOrigemActionPerformed
-        // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_paisOrigemActionPerformed
 
     private void btnNovaRotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaRotaActionPerformed
-        // TODO add your handling code here:
         paisOrigem.setText("");
         cidadaOrigem.setText("");
         paisDestino.setText("");
@@ -395,7 +387,7 @@ public class CalcularRotas extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         menu.setVisible(true);
-  
+
     }//GEN-LAST:event_btnbackActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel autonomiaIcon;

@@ -5,12 +5,12 @@
 
 /**
  *
- * @author afonso
+ * @author Tiago Paiva e Mário Bonacho
  */
 package modelo;
 
 public class Grafo {
-    private double[][] graph; // Usar double para as distâncias
+    private double[][] graph; 
 
     public Grafo(int numVertices) {
         this.graph = new double[numVertices][numVertices];

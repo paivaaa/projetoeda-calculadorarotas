@@ -1,3 +1,12 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Tiago Paiva e Mário Bonacho
+ */
 package app;
 
 import java.util.List;
@@ -66,7 +75,7 @@ public class Main {
             // Solicita a autonomia ao utilizador
             System.out.print("\nDigite a autonomia do automóvel (em km): ");
             int autonomia = scanner.nextInt();
-            scanner.nextLine();  // Consome a nova linha após o número
+            scanner.nextLine();  
 
             System.out.println("");
 

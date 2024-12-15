@@ -5,7 +5,7 @@
 
 /**
  *
- * @author afonso
+ * @author Tiago Paiva e Mário Bonacho
  */
 package util;
 

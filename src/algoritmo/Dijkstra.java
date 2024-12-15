@@ -1,10 +1,19 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Tiago Paiva e Mário Bonacho
+ */
 package algoritmo;
 
 import java.util.*;
 
 public class Dijkstra {
 
-    private double[] dist;  // Usar double ao invés de int
+    private double[] dist;  
     private int[] prev;
     private double[][] graph;
 
@@ -19,7 +28,7 @@ public class Dijkstra {
 
     public List<Integer> dijkstra(int origem, int destino) {
         int n = dist.length;
-        Arrays.fill(dist, Double.MAX_VALUE);  // Inicializa como double
+        Arrays.fill(dist, Double.MAX_VALUE);  
         Arrays.fill(prev, -1);
 
         dist[origem] = 0;

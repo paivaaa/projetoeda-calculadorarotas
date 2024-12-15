@@ -1,22 +1,20 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Tiago Paiva e Mário Bonacho
  */
 package ui;
 
 import java.awt.Color;
 import javax.swing.DefaultListModel;
 
-/**
- *
- * @author bachilak
- */
+
 public class Historico extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Historico
-     */
-    
     private Menu menu;
     
     DefaultListModel data;
@@ -24,28 +22,16 @@ public class Historico extends javax.swing.JFrame {
     public Historico(Menu menu) {
         this.menu = menu; // Inicializar CalcularRotas
         initComponents();
-        //carregarRotas(); // Atualizar jList1 com dados
         data = new DefaultListModel();
         
         setTitle("Calculadora de rotas");
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.WHITE);
         setResizable(false);
-        
-        
-        jList1.setModel(data);
+            
+        lista.setModel(data);
     }
-    /**
-    private void carregarRotas() {
-        // Obter o resultado da rota
-        String resultadoRota = calcularRotas.getResultadoRota();
-
-        // Adicionar o resultado ao JList
-        DefaultListModel<String> model = new DefaultListModel<>();
-        model.addElement(resultadoRota); // Adiciona o valor calculado
-        jList1.setModel(model);
-    }
-    */
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,7 +43,7 @@ public class Historico extends javax.swing.JFrame {
 
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lista = new javax.swing.JList<>();
         btnCarregarHistorico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,13 +58,13 @@ public class Historico extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        lista.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList1.setFocusable(false);
-        jScrollPane1.setViewportView(jList1);
+        lista.setFocusable(false);
+        jScrollPane1.setViewportView(lista);
 
         btnCarregarHistorico.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCarregarHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/loader-icon.png"))); // NOI18N
@@ -120,8 +106,7 @@ public class Historico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        DefaultListModel<String> model = (DefaultListModel<String>) jList1.getModel();
+        DefaultListModel<String> model = (DefaultListModel<String>) lista.getModel();
         model.removeAllElements();
         this.setVisible(false);
         menu.setVisible(true);
@@ -130,7 +115,6 @@ public class Historico extends javax.swing.JFrame {
 
     private void btnCarregarHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarHistoricoActionPerformed
         //Botão carregar menu:
-        //System.out.println(menu.calcularRotas.getHibtnCarregarHistorico));
         data.addAll(menu.calcularRotas.getHistorico());
     }//GEN-LAST:event_btnCarregarHistoricoActionPerformed
 
@@ -139,7 +123,7 @@ public class Historico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCarregarHistorico;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> lista;
     // End of variables declaration//GEN-END:variables
 }
