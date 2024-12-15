@@ -4,15 +4,13 @@
  */
 package ui;
 
+import java.awt.Color;
+
 /**
  *
  * @author bachilak
  */
 public class JanelaCidades extends javax.swing.JFrame {
-
-    /**
-     * Creates new form JanelaCidades
-     */
     
     private Pesquisa pesquisa;
     
@@ -21,6 +19,8 @@ public class JanelaCidades extends javax.swing.JFrame {
         
         setTitle("Calculadora de rotas");
         setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.WHITE);
+        setResizable(false);
         
         jTextArea1.setText(a);
         this.pesquisa = pesquisa;

@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.awt.Color;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import java.util.List;
@@ -32,6 +33,8 @@ public class CalcularRotas extends javax.swing.JFrame {
         
         setTitle("Calculadora de rotas");
         setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.WHITE);
+        setResizable(false);
     }
     
     private void adicionarAoHistorico(String resultadoRota) {
@@ -256,7 +259,7 @@ public class CalcularRotas extends javax.swing.JFrame {
         bottomPapelLayout.setVerticalGroup(
             bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomPapelLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addGap(45, 45, 45)
                 .addGroup(bottomPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(paisOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(locationIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

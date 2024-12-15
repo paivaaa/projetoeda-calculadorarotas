@@ -30,6 +30,7 @@ public class Historico extends javax.swing.JFrame {
         setTitle("Calculadora de rotas");
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.WHITE);
+        setResizable(false);
         
         
         jList1.setModel(data);
@@ -82,6 +83,8 @@ public class Historico extends javax.swing.JFrame {
         btnCarregarHistorico.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCarregarHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/loader-icon.png"))); // NOI18N
         btnCarregarHistorico.setText("Carregar histórico");
+        btnCarregarHistorico.setFocusPainted(false);
+        btnCarregarHistorico.setFocusable(false);
         btnCarregarHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCarregarHistoricoActionPerformed(evt);

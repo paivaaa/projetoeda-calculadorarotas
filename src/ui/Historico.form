@@ -100,6 +100,8 @@
           <Image iconType="3" name="/resources/icons/loader-icon.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Carregar hist&#xf3;rico"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarregarHistoricoActionPerformed"/>

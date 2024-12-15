@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Cidade;
@@ -26,6 +27,10 @@ public class Pesquisa extends javax.swing.JFrame {
         this.menu = menu;
         
         setTitle("Calculadora de rotas");
+        
+        getContentPane().setBackground(Color.WHITE);
+        setResizable(false);
+        
         setLocationRelativeTo(null);
     }
 
@@ -59,7 +64,6 @@ public class Pesquisa extends javax.swing.JFrame {
 
         jLabel1.setText("Insira o nome do país que pretende pesquisar:");
 
-        nomePais.setText("portugal");
         nomePais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomePaisActionPerformed(evt);
@@ -94,13 +98,13 @@ public class Pesquisa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(BackButton)
-                .addGap(21, 21, 21)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomePais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Pesquisar))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
