@@ -192,7 +192,6 @@ public class CalcularRotas extends javax.swing.JFrame {
         locationIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/buildings-icon.png"))); // NOI18N
         locationIcon3.setText("Cidade:");
 
-        paisOrigem.setText("portugal");
         paisOrigem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paisOrigemActionPerformed(evt);

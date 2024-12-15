@@ -48,6 +48,7 @@ public class Pesquisa extends javax.swing.JFrame {
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/back-icon.png"))); // NOI18N
         BackButton.setBorderPainted(false);
+        BackButton.setContentAreaFilled(false);
         BackButton.setFocusPainted(false);
         BackButton.setFocusable(false);
         BackButton.addActionListener(new java.awt.event.ActionListener() {

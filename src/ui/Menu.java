@@ -43,7 +43,7 @@ public class Menu extends javax.swing.JFrame {
         btnPesquisarCidades = new javax.swing.JButton();
         btnHistorico = new javax.swing.JButton();
         UpPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +59,7 @@ public class Menu extends javax.swing.JFrame {
                 btnCalcularRotasActionPerformed(evt);
             }
         });
-        DownPanel.add(btnCalcularRotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 22, 230, 40));
+        DownPanel.add(btnCalcularRotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 230, 40));
 
         btnPesquisarCidades.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPesquisarCidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/search-icon.png"))); // NOI18N
@@ -70,7 +70,7 @@ public class Menu extends javax.swing.JFrame {
                 btnPesquisarCidadesActionPerformed(evt);
             }
         });
-        DownPanel.add(btnPesquisarCidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 230, 40));
+        DownPanel.add(btnPesquisarCidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 230, 40));
 
         btnHistorico.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/history-icon.png"))); // NOI18N
@@ -81,31 +81,30 @@ public class Menu extends javax.swing.JFrame {
                 btnHistoricoActionPerformed(evt);
             }
         });
-        DownPanel.add(btnHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 138, 230, 40));
+        DownPanel.add(btnHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 230, 40));
 
         getContentPane().add(DownPanel, java.awt.BorderLayout.CENTER);
 
         UpPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/logo.png"))); // NOI18N
-        jLabel1.setText("Calculdora de Rotas");
+        logo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout UpPanelLayout = new javax.swing.GroupLayout(UpPanel);
         UpPanel.setLayout(UpPanelLayout);
         UpPanelLayout.setHorizontalGroup(
             UpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UpPanelLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jLabel1)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGap(141, 141, 141)
+                .addComponent(logo)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         UpPanelLayout.setVerticalGroup(
             UpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UpPanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(logo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(UpPanel, java.awt.BorderLayout.PAGE_START);
@@ -172,6 +171,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnCalcularRotas;
     private javax.swing.JButton btnHistorico;
     private javax.swing.JButton btnPesquisarCidades;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel logo;
     // End of variables declaration//GEN-END:variables
 }
